@@ -464,7 +464,7 @@ public class TaskLog {
     }
   }
 
-  private static final String bashCommand = "bash";
+  private static final String bashCommand = "ksh";
   private static final String tailCommand = "tail";
   
   /**

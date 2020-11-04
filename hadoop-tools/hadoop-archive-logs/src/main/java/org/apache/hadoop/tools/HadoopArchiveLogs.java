@@ -467,7 +467,7 @@ public class HadoopArchiveLogs implements Tool {
     FileWriterWithEncoding fw = null;
     try {
       fw = new FileWriterWithEncoding(localScript, "UTF-8");
-      fw.write("#!/bin/bash\nset -e\nset -x\n");
+      fw.write("#!/bin/ksh\nset -e\nset -x\n");
       int containerCount = 1;
       for (AppInfo app : eligibleApplications) {
         fw.write("if [ \"$YARN_SHELL_ID\" == \"");

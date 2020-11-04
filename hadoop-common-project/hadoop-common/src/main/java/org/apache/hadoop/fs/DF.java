@@ -141,7 +141,7 @@ public class DF extends Shell {
       throw new AssertionError(
           "DF.getExecString() should never be called on Windows");
     } else {
-      return new String[] {"bash","-c","exec 'df' '-k' '-P' '" + dirPath 
+      return new String[] {"ksh","-c","exec 'df' '-k' '-P' '" + dirPath
                       + "' 2>/dev/null"};
     }
   }

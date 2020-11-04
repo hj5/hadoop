@@ -267,7 +267,7 @@ public class TestDockerContainerExecutorWithMocks {
     String shellScript =  workDir + "/launch_container.sh";
 
     expectedCommands.addAll(Arrays.asList(testImage.replaceAll("['\"]", ""),
-      "bash","\"" + shellScript + "\""));
+      "ksh","\"" + shellScript + "\""));
 
     String expectedPidString =
       "echo `/bin/true inspect --format {{.State.Pid}} " + containerId+"` > "+

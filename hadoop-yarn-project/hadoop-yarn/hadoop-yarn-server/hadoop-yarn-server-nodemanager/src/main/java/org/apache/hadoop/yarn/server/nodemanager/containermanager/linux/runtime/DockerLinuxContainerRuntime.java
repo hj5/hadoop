@@ -288,7 +288,7 @@ public class DockerLinuxContainerRuntime implements LinuxContainerRuntime {
       Path launchDst =
           new Path(containerWorkDir, ContainerLaunch.CONTAINER_SCRIPT);
 
-      overrideCommands.add("bash");
+      overrideCommands.add("ksh");
       overrideCommands.add(launchDst.toUri().getPath());
       runCommand.setOverrideCommandWithArgs(overrideCommands);
     }

@@ -425,7 +425,7 @@ public abstract class ContainerExecutor implements Configurable {
         retCommand.addAll(Arrays.asList("nice", "-n",
             Integer.toString(containerSchedPriorityAdjustment)));
       }
-      retCommand.addAll(Arrays.asList("bash", command));
+      retCommand.addAll(Arrays.asList("ksh", command));
       return retCommand.toArray(new String[retCommand.size()]);
     }
 

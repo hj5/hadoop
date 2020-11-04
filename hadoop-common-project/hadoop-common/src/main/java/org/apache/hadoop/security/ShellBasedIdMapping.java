@@ -220,7 +220,7 @@ public class ShellBasedIdMapping implements IdMappingServiceProvider {
     BufferedReader br = null;
     try {
       Process process = Runtime.getRuntime().exec(
-          new String[] { "bash", "-c", command });
+          new String[] { "ksh", "-c", command });
       br = new BufferedReader(
           new InputStreamReader(process.getInputStream(),
                                 Charset.defaultCharset()));

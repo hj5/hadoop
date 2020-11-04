@@ -567,8 +567,8 @@ public class DockerContainerExecutor extends ContainerExecutor {
       String exitCodeFile = ContainerLaunch.getExitCodeFile(
         pidFile.toString());
       String tmpFile = exitCodeFile + ".tmp";
-      pout.println("#!/usr/bin/env bash");
-      pout.println("bash \"" + sessionScriptPath.toString() + "\"");
+      pout.println("#!/usr/bin/env ksh");
+      pout.println("ksh \"" + sessionScriptPath.toString() + "\"");
       pout.println("rc=$?");
       pout.println("echo $rc > \"" + tmpFile + "\"");
       pout.println("mv -f \"" + tmpFile + "\" \"" + exitCodeFile + "\"");
@@ -585,12 +585,12 @@ public class DockerContainerExecutor extends ContainerExecutor {
         // We need to do a move as writing to a file is not atomic
         // Process reading a file being written to may get garbled data
         // hence write pid to tmp file first followed by a mv
-        pout.println("#!/usr/bin/env bash");
+        pout.println("#!/usr/bin/env ksh");
         pout.println();
         pout.println("echo "+ dockerPidScript +" > " + pidFile.toString()
           + ".tmp");
         pout.println("/bin/mv -f " + pidFile.toString() + ".tmp " + pidFile);
-        pout.println(dockerCommand + " bash \"" +
+        pout.println(dockerCommand + " ksh \"" +
           launchDst.toUri().getPath().toString() + "\"");
       } finally {
         IOUtils.cleanup(LOG, pout, out);

@@ -536,7 +536,7 @@ public class RandomTextWriter extends Configured implements Tool {
                                    "excerpt", "dunkadoo",
                                    "Spencerism", "insatiately",
                                    "Gilaki", "oratorship",
-                                   "arduousness", "unbashfulness",
+                                   "arduousness", "unkshfulness",
                                    "Pithecolobium", "unisexuality",
                                    "veterinarian", "detractive",
                                    "liquidity", "acidophile",

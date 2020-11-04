@@ -240,7 +240,7 @@ public class TestDockerContainerRuntime {
         .append("-v %5$s:%5$s ")
         .append("-v %6$s:%6$s ")
         .append("%7$s ")
-        .append("bash %8$s/launch_container.sh");
+        .append("ksh %8$s/launch_container.sh");
 
     String expectedCommand = String.format(expectedCommandTemplate.toString(),
         containerId, runAsUser, containerWorkDir, localDirs.get(0),

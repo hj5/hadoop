@@ -285,7 +285,7 @@ public class ApplicationMaster {
   static final String APPID_TIMELINE_FILTER_NAME = "appId";
   static final String USER_TIMELINE_FILTER_NAME = "user";
 
-  private final String linux_bash_command = "bash";
+  private final String linux_bash_command = "ksh";
   private final String windows_command = "cmd /c";
 
   private int yarnShellIdCounter = 1;

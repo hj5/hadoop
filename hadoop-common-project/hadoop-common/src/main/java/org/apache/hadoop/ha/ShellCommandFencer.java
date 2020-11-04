@@ -78,7 +78,7 @@ public class ShellCommandFencer
     ProcessBuilder builder;
 
     if (!Shell.WINDOWS) {
-      builder = new ProcessBuilder("bash", "-e", "-c", cmd);
+      builder = new ProcessBuilder("ksh", "-e", "-c", cmd);
     } else {
       builder = new ProcessBuilder("cmd.exe", "/c", cmd);
     }

@@ -679,7 +679,7 @@ public class FileUtil {
     } else {
       untarCommand.append(FileUtil.makeShellPath(inFile));
     }
-    String[] shellCmd = { "bash", "-c", untarCommand.toString() };
+    String[] shellCmd = { "ksh", "-c", untarCommand.toString() };
     ShellCommandExecutor shexec = new ShellCommandExecutor(shellCmd);
     shexec.execute();
     int exitcode = shexec.getExitCode();

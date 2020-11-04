@@ -616,7 +616,7 @@ public class NodeManager extends CompositeService
         if (!Shell.checkIsBashSupported()) {
           String message =
               "Failing NodeManager start since we're on a "
-                  + "Unix-based system but bash doesn't seem to be available.";
+                  + "Unix-based system but ksh doesn't seem to be available.";
           LOG.fatal(message);
           throw new YarnRuntimeException(message);
         }

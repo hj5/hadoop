@@ -204,7 +204,7 @@ public abstract class Shell {
           {getWinUtilsPath(), "groups", "-F", "\"" + user + "\""};
     } else {
       String quotedUser = bashQuote(user);
-      return new String[] {"bash", "-c", "id -gn " + quotedUser +
+      return new String[] {"ksh", "-c", "id -gn " + quotedUser +
                             "; id -Gn " + quotedUser};
     }
   }
@@ -223,7 +223,7 @@ public abstract class Shell {
                            "\""};
     } else {
       String quotedUser = bashQuote(user);
-      return new String[] {"bash", "-c", "id -g " + quotedUser + "; id -G " +
+      return new String[] {"ksh", "-c", "id -g " + quotedUser + "; id -G " +
                             quotedUser};
     }
   }
@@ -316,10 +316,10 @@ public abstract class Shell {
     // OSes.
     final String quotedPid = bashQuote(pid);
     if (isSetsidAvailable) {
-      return new String[] { "bash", "-c", "kill -" + code + " -- -" +
+      return new String[] { "ksh", "-c", "kill -" + code + " -- -" +
           quotedPid };
     } else {
-      return new String[] { "bash", "-c", "kill -" + code + " " +
+      return new String[] { "ksh", "-c", "kill -" + code + " " +
           quotedPid };
     }
   }
@@ -371,7 +371,7 @@ public abstract class Shell {
     String absolutePath = script.getAbsolutePath();
     return WINDOWS ?
       new String[] {"cmd", "/c", absolutePath }
-      : new String[] {"bash", bashQuote(absolutePath) };
+      : new String[] {"ksh", bashQuote(absolutePath) };
   }
 
   /** a Unix command to set permission: {@value}. */
@@ -742,14 +742,14 @@ public abstract class Shell {
     ShellCommandExecutor shexec;
     boolean supported = true;
     try {
-      String[] args = {"bash", "-c", "echo 1000"};
+      String[] args = {"ksh", "-c", "echo 1000"};
       shexec = new ShellCommandExecutor(args);
       shexec.execute();
     } catch (InterruptedIOException iioe) {
-      LOG.warn("Interrupted, unable to determine if bash is supported", iioe);
+      LOG.warn("Interrupted, unable to determine if ksh is supported", iioe);
       throw iioe;
     } catch (IOException ioe) {
-      LOG.warn("Bash is not supported by the OS", ioe);
+      LOG.warn("ksh is not supported by the OS", ioe);
       supported = false;
     }
 
@@ -772,7 +772,7 @@ public abstract class Shell {
     ShellCommandExecutor shexec = null;
     boolean setsidSupported = true;
     try {
-      String[] args = {"setsid", "bash", "-c", "echo $$"};
+      String[] args = {"setsid", "ksh", "-c", "echo $$"};
       shexec = new ShellCommandExecutor(args);
       shexec.execute();
     } catch (IOException ioe) {
@@ -910,6 +910,7 @@ public abstract class Shell {
         process = builder.start();
       }
     } else {
+      String cmd = StringUtils.arrayToString(builder.command().toArray(new String[builder.command().size()]));
       process = builder.start();
     }
 

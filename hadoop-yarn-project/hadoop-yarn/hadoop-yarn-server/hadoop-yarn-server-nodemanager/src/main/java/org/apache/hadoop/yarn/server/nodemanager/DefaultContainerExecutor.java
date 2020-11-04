@@ -353,8 +353,8 @@ public class DefaultContainerExecutor extends ContainerExecutor {
       String exitCodeFile = ContainerLaunch.getExitCodeFile(
           pidFile.toString());
       String tmpFile = exitCodeFile + ".tmp";
-      pout.println("#!/bin/bash");
-      pout.println("/bin/bash \"" + sessionScriptPath.toString() + "\"");
+      pout.println("#!/bin/ksh");
+      pout.println("/bin/ksh \"" + sessionScriptPath.toString() + "\"");
       pout.println("rc=$?");
       pout.println("echo $rc > \"" + tmpFile + "\"");
       pout.println("/bin/mv -f \"" + tmpFile + "\" \"" + exitCodeFile + "\"");
@@ -370,12 +370,12 @@ public class DefaultContainerExecutor extends ContainerExecutor {
         // We need to do a move as writing to a file is not atomic
         // Process reading a file being written to may get garbled data
         // hence write pid to tmp file first followed by a mv
-        pout.println("#!/bin/bash");
+        pout.println("#!/bin/ksh");
         pout.println();
         pout.println("echo $$ > " + pidFile.toString() + ".tmp");
         pout.println("/bin/mv -f " + pidFile.toString() + ".tmp " + pidFile);
         String exec = Shell.isSetsidAvailable? "exec setsid" : "exec";
-        pout.println(exec + " /bin/bash \"" +
+        pout.println(exec + " /bin/ksh \"" +
             launchDst.toUri().getPath().toString() + "\"");
       }
       lfs.setPermission(sessionScriptPath,

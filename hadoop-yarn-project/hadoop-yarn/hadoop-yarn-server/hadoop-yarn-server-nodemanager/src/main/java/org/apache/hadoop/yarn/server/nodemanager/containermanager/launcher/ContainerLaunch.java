@@ -688,13 +688,13 @@ public class ContainerLaunch implements Callable<Integer> {
     }
 
     public UnixShellScriptBuilder(){
-      line("#!/bin/bash");
+      line("#!/bin/ksh");
       line();
     }
 
     @Override
     public void command(List<String> command) {
-      line("exec /bin/bash -c \"", StringUtils.join(" ", command), "\"");
+      line("exec /bin/ksh -c \"", StringUtils.join(" ", command), "\"");
       errorCheck();
     }
 

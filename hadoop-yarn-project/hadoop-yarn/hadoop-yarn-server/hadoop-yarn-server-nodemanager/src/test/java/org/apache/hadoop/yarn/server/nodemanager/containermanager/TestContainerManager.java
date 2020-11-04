@@ -1335,7 +1335,7 @@ public class TestContainerManager extends BaseContainerManagerTest {
     localResources.put(destinationFile, rsrc_alpha);
     containerLaunchContext.setLocalResources(localResources);
     List<String> commands = new ArrayList<String>();
-    commands.add("/bin/bash");
+    commands.add("/bin/ksh");
     commands.add(scriptFile.getAbsolutePath());
     containerLaunchContext.setCommands(commands);
     StartContainerRequest scRequest =

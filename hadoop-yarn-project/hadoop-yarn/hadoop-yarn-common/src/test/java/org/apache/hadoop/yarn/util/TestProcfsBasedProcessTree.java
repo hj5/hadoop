@@ -78,7 +78,7 @@ public class TestProcfsBasedProcessTree {
         if (isSetsidAvailable()) {
           args.add("setsid");
         }
-        args.add("bash");
+        args.add("ksh");
         args.add("-c");
         args.add(" echo $$ > " + pidFile + "; sh " + shellScript + " " + N
             + ";");
@@ -891,7 +891,7 @@ public class TestProcfsBasedProcessTree {
     ShellCommandExecutor shexec = null;
     boolean setsidSupported = true;
     try {
-      String[] args = { "setsid", "bash", "-c", "echo $$" };
+      String[] args = { "setsid", "ksh", "-c", "echo $$" };
       shexec = new ShellCommandExecutor(args);
       shexec.execute();
     } catch (IOException ioe) {

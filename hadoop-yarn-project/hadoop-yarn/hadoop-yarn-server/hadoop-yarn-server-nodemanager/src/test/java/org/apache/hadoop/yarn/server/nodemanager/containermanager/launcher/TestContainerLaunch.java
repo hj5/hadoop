@@ -901,7 +901,7 @@ public class TestContainerLaunch extends BaseContainerManagerTest {
       writer.println("@echo " + cId + "> " + processStartFile);
       writer.println("@ping -n 100 127.0.0.1 >nul");
     } else {
-      writer.println("#!/bin/bash\n\n");
+      writer.println("#!/bin/ksh\n\n");
       writer.println("echo \"Running testscript for delayed kill\"");
       writer.println("hello=\"Got SIGTERM\"");
       writer.println("umask 0");
@@ -1242,7 +1242,7 @@ public class TestContainerLaunch extends BaseContainerManagerTest {
     // setup a script that can handle sigterm gracefully
     File scriptFile = Shell.appendScriptExtension(tmpDir, "testscript");
     PrintWriter writer = new PrintWriter(new FileOutputStream(scriptFile));
-    writer.println("#!/bin/bash\n\n");
+    writer.println("#!/bin/ksh\n\n");
     writer.println("echo \"Running testscript for forked process\"");
     writer.println("umask 0");
     writer.println("echo $$ >> " + processStartFile);
